@@ -1,8 +1,8 @@
-import HomePage from "./assets/pages/users/homePage";
+import HomePage from "./pages/users/homePage";
 import { ROUTERS } from "./utils/router";
 import { Route, Routes } from "react-router-dom";
-import MasterLayout from "./assets/pages/users/theme/masterLayout";
-import ProfilePage from "./assets/pages/users/profilePage";
+import MasterLayout from "./pages/users/theme/masterLayout";
+import ProfilePage from "./pages/users/profilePage";
 
 const renderUserRouter = () => {
     const userRouters = [
