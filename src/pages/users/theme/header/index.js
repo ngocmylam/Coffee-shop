@@ -5,11 +5,52 @@ import { AiOutlineInstagram } from "react-icons/ai";
 import { AiOutlineLinkedin } from "react-icons/ai";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { AiOutlineMail } from "react-icons/ai";
 import { formatter } from "../../../../utils/formatter";
+import { ROUTERS } from "../../../../utils/router";
+import { useState } from 'react';
 
 const Header = () => {
+    const [menus, setMenus] = useState([
+        {
+            name: "Trang chủ",
+            path: ROUTERS.USER.HOME
+        },
+        {
+            name: "Cửa hàng",
+            path: ROUTERS.USER.PRODUCTS
+        },
+        {
+            name: "Sản phẩm",
+            path: "",
+            isShowSubMenu: false,
+            child: [
+                {
+                    name: "Thịt",
+                    path: ""
+                },
+                {
+                    name: "Rau củ",
+                    path: ""
+                },
+                {
+                    name: "Thức ăn nhanh",
+                    path: ""
+                }
+            ]
+        },
+        {
+            name: "Bài viết",
+            path: ""
+        },
+        {
+            name: "Liên hệ",
+            path: ""
+        }
+    ]);
+
     return (
         <>
             <div className="header__top">
@@ -57,9 +98,45 @@ const Header = () => {
             </div>
             <div className="container">
                 <div className="row">
-                    <div className="col-xl-3">LOGO</div>
-                    <div className="col-xl-6">MENUS</div>
-                    <div className="col-xl-3">PHONE</div>
+                    <div className="col-xl-3">
+                        <div className="header__logo">
+                            <h1>
+                                THO SHOP
+                            </h1>
+                        </div>
+                    </div>
+                    <div className="col-xl-6">
+                        <nav className="header__menu">
+                            <ul>
+                                {menus?.map((menu, menuKey) =>(
+                                    <li key={menuKey} className={menuKey === 0 ? "active" : ""}>
+                                        <Link to={menu?.path}>{menu?.name}</Link>
+                                    </li>
+                                ))}
+                                {/* <li>Trang chủ</li>
+                                <li>
+                                    <Link to={}>Sản phẩm</Link>
+                                    <ul>
+                                        <li>Thịt</li>
+                                    </ul>
+                                </li> */}
+                            </ul>
+                        </nav>
+                    </div>
+                    <div className="col-xl-3">
+                        <div className="header__cart">
+                            <div className="header__cart_price">
+                                <span>{ formatter(1274683)}</span>
+                            </div>
+                            <ul>
+                                <li>
+                                    <Link to="#">
+                                        <AiOutlineShoppingCart /><span>7</span>
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
