@@ -55,6 +55,13 @@ const Header = () => {
                     </div>
                 </div>
             </div>
+            <div className="container">
+                <div className="row">
+                    <div className="col-xl-3">LOGO</div>
+                    <div className="col-xl-6">MENUS</div>
+                    <div className="col-xl-3">PHONE</div>
+                </div>
+            </div>
         </>
     )
 };
