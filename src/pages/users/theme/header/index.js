@@ -101,7 +101,7 @@ const Header = () => {
                     <div className="col-xl-3">
                         <div className="header__logo">
                             <h1>
-                                THO SHOP
+                                THO NGU SHOP
                             </h1>
                         </div>
                     </div>
