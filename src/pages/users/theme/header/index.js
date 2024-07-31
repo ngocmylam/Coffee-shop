@@ -1,19 +1,21 @@
 import { memo } from "react";
-import "./style.scss";
 import { AiOutlineFacebook } from "react-icons/ai";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { AiOutlineLinkedin } from "react-icons/ai";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineMenu } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { AiOutlineMail } from "react-icons/ai";
 import { formatter } from "../../../../utils/formatter";
 import { ROUTERS } from "../../../../utils/router";
 import { useState } from 'react';
+import "./style.scss";
 
 const Header = () => {
-    const [menus, setMenus] = useState([
+    const [IsShowCagorites, setShowCagorites] = useState(true);
+    const [menus] = useState([
         {
             name: "Trang chủ",
             path: ROUTERS.USER.HOME
@@ -139,6 +141,36 @@ const Header = () => {
                             </ul>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div className="container">
+                <div className="row hero__categories_container">
+                    <div className="col-xl-3 hero__cagorites">
+                        <div className="hero__categories__all" onClick={() => setShowCagorites(!IsShowCagorites)}>
+                            <AiOutlineMenu/>
+                            Danh sách sản phẩm
+                        </div>
+                        { IsShowCagorites && (
+                            <ul className={IsShowCagorites ? "" : "hidden"}>
+                                <li>
+                                    <Link to={"#"}>Thịt tươi</Link>
+                                </li>
+                                <li>
+                                    <Link to={"#"}>Rau củ</Link>
+                                </li>
+                                <li>
+                                    <Link to={"#"}>Nước trái cây</Link>
+                                </li>
+                                <li>
+                                    <Link to={"#"}>Trái cây</Link>
+                                </li>
+                                <li>
+                                    <Link to={"#"}>Hải sản</Link>
+                                </li>
+                            </ul>
+                        )}
+                    </div>
+                    <div className="col-lg-9">Phai</div>
                 </div>
             </div>
         </>
