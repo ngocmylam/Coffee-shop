@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { AiOutlineFacebook } from "react-icons/ai";
+import { AiOutlineFacebook, AiOutlinePhone } from "react-icons/ai";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { AiOutlineLinkedin } from "react-icons/ai";
 import { AiOutlineTwitter } from "react-icons/ai";
@@ -170,7 +170,38 @@ const Header = () => {
                             </ul>
                         )}
                     </div>
-                    <div className="col-lg-9">Phai</div>
+                    <div className="col-lg-9 hero__search_container">
+                        <div className="hero__search">
+                            <div className="hero__search__form">
+                                <form>
+                                    <input type="text" placeholder="Bạn đang tìm gì?"/>
+                                    <button type="submit">Tìm kiếm</button>
+                                </form>
+                            </div>
+                            <div className="hero__search__phone">
+                                <div className="hero__search__phone__icon">
+                                    <AiOutlinePhone/>
+                                </div>
+                                <div className="hero__search__phone__text">
+                                    <p>0945.156.489</p>
+                                    <span>Hỗ trợ 24/7</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="hero__item">
+                        <div className="hero__text">
+                            <span>Trái cây tươi</span>
+                            <h2>
+                                Rau quả <br/>
+                                Sạch 100%
+                            </h2>
+                            <p>Miễn phí giao hàng tận nơi</p>
+                            <Link to="" className="primary-btn">
+                            Mua ngay
+                            </Link>
+                        </div>
+                    </div>
+                    </div>
                 </div>
             </div>
         </>
