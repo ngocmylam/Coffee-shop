@@ -201,9 +201,9 @@ $bannerImg: "/assets/users/images/hero/banner.jpg";
     ul {
         position: absolute;
         opacity: 1;
-        border: 1px solid #b2b2b2;
+        // border: 1px solid #b2b2b2;
         width: 25%;
-        background: #ebebeb;
+        background: #252525;
         transition: all 0.2s;
 
         li {
@@ -214,14 +214,15 @@ $bannerImg: "/assets/users/images/hero/banner.jpg";
                 text-decoration: none;
                 background-color: transparent;
                 font-size: 16px;
-                color: map.get($theme-colors, "normal-text");
+                // color: map.get($theme-colors, "normal-text");
+                color: #ebebeb;
                 line-height: 39px;
                 display: block;
                 padding-left: 40px;
             }
 
             &:hover {
-                background: #ffffff;
+                // background: #ffffff;
 
                 a {
                     color: map.get($theme-colors, "main");
@@ -338,7 +339,7 @@ $bannerImg: "/assets/users/images/hero/banner.jpg";
                 text-transform: uppercase;
                 font-weight: 700;
                 line-height: 52px;
-                color: map.get($theme-colors, "nold-text");
+                color: map.get($theme-colors, "normal-text");
                 margin: 10px 0;
             }
 

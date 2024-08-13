@@ -10,9 +10,17 @@ import cat4Img from "../../../../src/assets/users/images/categories/cat-4.jpg";
 import cat5Img from "../../../../src/assets/users/images/categories/cat-5.jpg";
 import feature1Img from "../../../../src/assets/users/images/featured/feature1.jpg";
 import feature2Img from "../../../../src/assets/users/images/featured/feature2.jpg";
+import feature3Img from "../../../../src/assets/users/images/featured/feature3.jpg";
+import feature4Img from "../../../../src/assets/users/images/featured/feature4.jpg";
+import feature5Img from "../../../../src/assets/users/images/featured/feature5.jpg";
+import feature6Img from "../../../../src/assets/users/images/featured/feature6.jpg";
+import feature7Img from "../../../../src/assets/users/images/featured/feature7.jpg";
+import feature8Img from "../../../../src/assets/users/images/featured/feature8.jpg";
+import banner1Img from "../../../../src/assets/users/images/banner/banner-1.jpg";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { AiOutlineEye, AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from 'react-router-dom';
+import { formatter } from "../../../utils/formatter";
 
 const HomePage = () => {
     const responsive = {
@@ -64,13 +72,43 @@ const HomePage = () => {
           products: [
             {
               img: feature1Img,
-              name: "Rau",
-              price: 20000,
+              name: "Thịt bò nạt",
+              price: 90000,
             },
             {
               img: feature2Img,
               name: "Chuối",
               price: 20000,
+            },
+            {
+              img: feature3Img,
+              name: "Ổi",
+              price: 25000,
+            },
+            {
+              img: feature4Img,
+              name: "Dưa hấu",
+              price: 44000,
+            },
+            {
+              img: feature5Img,
+              name: "Nho tím",
+              price: 120000,
+            },
+            {
+              img: feature6Img,
+              name: "Hamburger",
+              price: 86000,
+            },
+            {
+              img: feature7Img,
+              name: "Xoài keo",
+              price: 25000,
+            },
+            {
+              img: feature8Img,
+              name: "Táo Úc",
+              price: 53000,
             },
           ],
         },
@@ -78,9 +116,54 @@ const HomePage = () => {
           title: "Thịt tươi",
           products: [
             {
-              img: feature2Img,
+              img: feature1Img,
               name: "Thịt bò nạt",
+              price: 90000,
+            },
+          ],
+        },
+        fruits: {
+          title: "Trái cây",
+          products: [
+            {
+              img: feature2Img,
+              name: "Chuối",
               price: 20000,
+            },
+            {
+              img: feature7Img,
+              name: "Xoài keo",
+              price: 25000,
+            },
+            {
+              img: feature8Img,
+              name: "Táo Úc",
+              price: 53000,
+            },
+            {
+              img: feature3Img,
+              name: "Ổi",
+              price: 25000,
+            },
+            {
+              img: feature4Img,
+              name: "Dưa hấu",
+              price: 44000,
+            },
+            {
+              img: feature5Img,
+              name: "Nho tím",
+              price: 120000,
+            },
+          ],
+        },
+        fastFood: {
+          title: "Thức ăn nhanh",
+          products: [
+            {
+              img: feature6Img,
+              name: "Hamburger",
+              price: 86000,
             },
           ],
         },
@@ -105,7 +188,7 @@ const HomePage = () => {
                     backgroundImage: `url(${item.img})`,
                   }}
                   >
-                    <ul>
+                    <ul className="featured__item__pic__hover">
                       <li>
                         <AiOutlineEye/>
                       </li>
@@ -116,8 +199,9 @@ const HomePage = () => {
                   </div>
                   <div className="featured__item__text">
                     <h6>
-                      <Link to= ""></Link>
+                      <Link to= "">{item.name}</Link>
                     </h6>
+                    <h5>{formatter(item.price)}</h5>
                   </div>
                 </div>
               </div>
@@ -145,10 +229,14 @@ const HomePage = () => {
                 <div className="container__categories_slider container">
                     <Carousel responsive={responsive} className="categories_slider">
                         {sliderItems.map((item,key) => (
-                          <div className="categories_slider_item"
-                          style={{ backgroundImage: `url(${item.bgImg})`}}>
+                          <>
+                            <div className="categories_slider_item"
+                            style={{ backgroundImage: `url(${item.bgImg})`}}>
+                          </div>
+                          <div>
                             <p>{item.name}</p>
                           </div>
+                          </>
                         ))}
                     </Carousel>
                 </div>
@@ -163,6 +251,18 @@ const HomePage = () => {
                 </div>
               </div>
             {/* {Featured End} */}
+            {/* Banner Begin */}
+              <div className="container">
+                <div className="banner">
+                  <div className="banner__pic col-xl-6">
+                    <img src={banner1Img} alt="banner"></img>
+                  </div>
+                  <div className="banner__pic col-xl-6">
+                    <img src={banner1Img} alt="banner"></img>
+                  </div>
+                </div>
+              </div>
+            {/* Banner End */}
         </>
       )
 };
