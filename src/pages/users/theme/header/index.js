@@ -1,20 +1,21 @@
 import { memo } from "react";
-import { AiOutlineFacebook, AiOutlinePhone } from "react-icons/ai";
+import { AiOutlineFacebook, AiOutlineGlobal, AiOutlinePhone } from "react-icons/ai";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { AiOutlineLinkedin } from "react-icons/ai";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AiOutlineMenu } from "react-icons/ai";
-import { Link } from 'react-router-dom';
 import { AiOutlineMail } from "react-icons/ai";
+import { Link } from 'react-router-dom';
 import { formatter } from "../../../../utils/formatter";
 import { ROUTERS } from "../../../../utils/router";
 import { useState } from 'react';
 import "./style.scss";
 
 const Header = () => {
-    const [IsShowCagorites, setShowCagorites] = useState(true);
+    const [isShowCagorites, setShowCagorites] = useState(true);
+    const [isShowHamburger, setShowHamburger] = useState(false);
     const [menus] = useState([
         {
             name: "Trang chủ",
@@ -55,6 +56,63 @@ const Header = () => {
 
     return (
         <>
+            <div className={`hamburger__menu__overlay ${
+                isShowHamburger ? "active" : ""
+                }`}
+                onClick={() => setShowHamburger(false)}
+            />
+            <div className= {`hamburger__menu__wrapper ${isShowHamburger ? "show" : ""}`}>
+                <div className="header__logo">
+                    <h1>THONGU SHOP</h1>
+                </div>
+                <div className="hamburger__menu__cart">
+                    <ul>
+                        <li>
+                            <Link to = {""}>
+                                <AiOutlineShoppingCart/> <span>1</span>
+                            </Link>
+                        </li>
+                    </ul>
+                    <div className="header__cart__price">
+                        Giỏ hàng: <span>{formatter(1000215)}</span>
+                    </div>
+                </div>
+                <div className="header__menu__widget">
+                    <div className="header__top__right__auth">
+                        <Link to = {""}>
+                            <AiOutlineUser /> Đăng nhập
+                        </Link>
+                    </div>
+                </div>
+                <div className="hamburger__menu__nav">
+                    <ul>
+                        <li>Menu Item</li>
+                    </ul>
+                </div>
+                <div className="header__top__right__social">
+                    <Link to={""}>
+                        <AiOutlineFacebook/>
+                    </Link>
+                    <Link to={""}>
+                        <AiOutlineInstagram/>
+                    </Link>
+                    <Link to={""}>
+                        <AiOutlineLinkedin/>
+                    </Link>
+                    <Link to={""}>
+                        <AiOutlineGlobal/>
+                    </Link>
+                </div>
+                <div className="hamburger__menu__contact">
+                    <ul>
+                        <li>
+                            <i className="fa fa-envelope"/> thongu@gmail.com
+                        </li>
+                        <li>Miễn phí đơn từ {formatter(2000000)}</li>
+                    </ul>
+                </div>
+            </div>
+             
             <div className="header__top">
                 <div className="container">
                     <div className="row">
@@ -100,14 +158,14 @@ const Header = () => {
             </div>
             <div className="container">
                 <div className="row">
-                    <div className="col-xl-3">
+                    <div className="col-lg-3">
                         <div className="header__logo">
                             <h1>
                                 THO NGU SHOP
                             </h1>
                         </div>
                     </div>
-                    <div className="col-xl-6">
+                    <div className="col-lg-6">
                         <nav className="header__menu">
                             <ul>
                                 {menus?.map((menu, menuKey) =>(
@@ -127,7 +185,7 @@ const Header = () => {
                             </ul>
                         </nav>
                     </div>
-                    <div className="col-xl-3">
+                    <div className="col-lg-3">
                         <div className="header__cart">
                             <div className="header__cart_price">
                                 <span>{ formatter(1274683)}</span>
@@ -140,18 +198,23 @@ const Header = () => {
                                 </li>
                             </ul>
                         </div>
+                        <div className="hamburger__open">
+                            <AiOutlineMenu 
+                            onClick={() => 
+                            setShowHamburger(true)}/>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className="container">
                 <div className="row hero__categories_container">
                     <div className="col-xl-3 hero__cagorites">
-                        <div className="hero__categories__all" onClick={() => setShowCagorites(!IsShowCagorites)}>
+                        <div className="hero__categories__all" onClick={() => setShowCagorites(!isShowCagorites)}>
                             <AiOutlineMenu/>
                             Danh sách sản phẩm
                         </div>
-                        { IsShowCagorites && (
-                            <ul className={IsShowCagorites ? "" : "hidden"}>
+                        { isShowCagorites && (
+                            <ul className={isShowCagorites ? "" : "hidden"}>
                                 <li>
                                     <Link to={"#"}>Thịt tươi</Link>
                                 </li>
