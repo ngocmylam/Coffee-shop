@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { AiOutlineFacebook, AiOutlineGlobal, AiOutlinePhone } from "react-icons/ai";
+import { AiOutlineDownCircle, AiOutlineFacebook, AiOutlineGlobal, AiOutlinePhone, AiOutlineUpCircle } from "react-icons/ai";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { AiOutlineLinkedin } from "react-icons/ai";
 import { AiOutlineTwitter } from "react-icons/ai";
@@ -7,6 +7,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineMail } from "react-icons/ai";
+import { AiTwotoneMail } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { formatter } from "../../../../utils/formatter";
 import { ROUTERS } from "../../../../utils/router";
@@ -15,8 +16,8 @@ import "./style.scss";
 
 const Header = () => {
     const [isShowCagorites, setShowCagorites] = useState(true);
-    const [isShowHamburger, setShowHamburger] = useState(false);
-    const [menus] = useState([
+    const [isShowHamburger, setShowHamburger] = useState(true);
+    const [menus, setMenus] = useState([
         {
             name: "Trang chủ",
             path: ROUTERS.USER.HOME
@@ -86,7 +87,39 @@ const Header = () => {
                 </div>
                 <div className="hamburger__menu__nav">
                     <ul>
-                        <li>Menu Item</li>
+                        {
+                            menus.map((menu, menuKey) => (
+                                <li key={menuKey} to={menu.path}>
+                                    <Link to={menu.path}
+                                        onClick={() => {
+                                            const newMenus = [...menus];
+                                            newMenus[menuKey].isShowSubMenu = !newMenus[menuKey].isShowSubMenu;
+                                            setMenus(newMenus);
+                                        }}
+                                    >
+                                        {menu.name}
+                                        {menu.child && (
+                                            menu.isShowSubMenu ? (
+                                                <AiOutlineDownCircle/>
+                                            ) : (
+                                                <AiOutlineUpCircle/>
+                                            )
+                                        )}
+                                    </Link>
+                                    { menu.child && (
+                                        <ul className={`header__menu__dropdown ${
+                                            menu.isShowSubMenu ? "show__submenu" : ""
+                                        }`}>
+                                            {menu.child.map((childItem, childKey) => (
+                                                <li key={`${childKey}-${childKey}`}>
+                                                    <Link to={childItem.path}>{childItem.name}</Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </li>
+                            ))
+                        }
                     </ul>
                 </div>
                 <div className="header__top__right__social">
@@ -106,7 +139,8 @@ const Header = () => {
                 <div className="hamburger__menu__contact">
                     <ul>
                         <li>
-                            <i className="fa fa-envelope"/> thongu@gmail.com
+                            <AiTwotoneMail />
+                            thongu@gmail.com
                         </li>
                         <li>Miễn phí đơn từ {formatter(2000000)}</li>
                     </ul>
